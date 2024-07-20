@@ -22,21 +22,15 @@ export const Navigation = () => {
     );
   });
 
-  const MobileNavigation = LANDING_NAVIGATION.map((navItem) => {
-    return (
-      <NavigatorItem
-        key={navItem.name}
-        name={navItem.name}
-        link={navItem.link}
-        isActive={pathname === navItem.link}
-      />
-    );
-  });
+  if (isMobile) {
+    <Menu className="size-6" />;
+  }
 
-  return (
-    <div className="lg:flex items-center gap-x-2 overflow-x-auto ml-4">
-      {!isMobile && DesktopNavigation}
-      {isMobile && <Menu className="size-6" />}
-    </div>
-  );
+  if (!isMobile) {
+    return (
+      <div className="lg:flex items-center gap-x-2 overflow-x-auto ml-4">
+        {DesktopNavigation}
+      </div>
+    );
+  }
 };
